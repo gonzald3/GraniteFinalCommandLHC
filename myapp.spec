@@ -5,7 +5,7 @@ a = Analysis(
     ['myapp.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('Granite_Logo.png', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

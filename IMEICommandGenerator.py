@@ -38,7 +38,7 @@ class IMEICommandGenerator:
         self.imei_entry = ttk.Entry(self.imei_frame, font=("Helvetica", 12), width=17)
         self.imei_entry.grid(row=0, column=0, padx=5, pady=5, sticky="ew")
 
-        master.geometry("500x500")  # Set initial window size
+        master.geometry("500x550")  # Set initial window size
 
         self.row_num = 2
 
@@ -92,9 +92,14 @@ class IMEICommandGenerator:
     def changeWan_script(self):
         imei = self.imei_entry.get()
         gateway = simpledialog.askstring("Input", "Enter the gateway (no CIDR):")
+        if gateway is None:
+            return  # Exit if the user cancels or closes the dialog
         usable_ip = simpledialog.askstring("Input", "Enter the usable (no CIDR):")
+        if usable_ip is None:
+            return  # Exit if the user cancels or closes the dialog
         subnet_mask_input = simpledialog.askstring("Input", "Enter the subnet mask:")
-
+        if subnet_mask_input is None:
+            return  # Exit if the user cancels or closes the dialog
         # Calculate CIDR of subnet mask
         cidr = calculate_cidr(subnet_mask_input)
 
